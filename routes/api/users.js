@@ -16,7 +16,7 @@ const User = require("../../models/User");
 // @route   GET api/users/test
 // @desc    Tests users route
 // @access  Public
-router.get("/test", (req, res) => res.json({ msg: "Users works" }));
+router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
 // @route   GET api/users/register
 // @desc    Register user
@@ -29,17 +29,17 @@ router.post("/register", (req, res) => {
 		return res.status(400).json(errors);
 	}
 
-	//Find if the email exists
 	User.findOne({ email: req.body.email }).then(user => {
 		if (user) {
 			errors.email = "Email already exists";
 			return res.status(400).json(errors);
 		} else {
 			const avatar = gravatar.url(req.body.email, {
-				s: "200", //Size
+				s: "200", // Size
 				r: "pg", // Rating
-				d: "mm" //Default
+				d: "mm" // Default
 			});
+
 			const newUser = new User({
 				name: req.body.name,
 				email: req.body.email,
@@ -62,7 +62,7 @@ router.post("/register", (req, res) => {
 });
 
 // @route   GET api/users/login
-// @desc    Login User / Returning JWT token
+// @desc    Login User / Returning JWT Token
 // @access  Public
 router.post("/login", (req, res) => {
 	const { errors, isValid } = validateLoginInput(req.body);
@@ -75,7 +75,7 @@ router.post("/login", (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 
-	// Find the user by email
+	// Find user by email
 	User.findOne({ email }).then(user => {
 		// Check for user
 		if (!user) {
@@ -87,14 +87,9 @@ router.post("/login", (req, res) => {
 		bcrypt.compare(password, user.password).then(isMatch => {
 			if (isMatch) {
 				// User Matched
+				const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
 
-				const payload = {
-					id: user.id,
-					name: user.name,
-					avatar: user.avatar
-				}; // Create JWT Payload
-
-				//Sign Token
+				// Sign Token
 				jwt.sign(
 					payload,
 					keys.secretOrKey,
