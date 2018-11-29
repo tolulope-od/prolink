@@ -128,7 +128,7 @@ class CreateProfile extends Component {
 			{ label: "Junior Developer", value: "Junioor Developer" },
 			{ label: "Senior Developer", value: "Senior Developer" },
 			{ label: "Manager", value: "Manager" },
-			{ label: "Student or Learning", value: "Student or Learning" },
+			{ label: "Student/Learning", value: "Student or Learning" },
 			{ label: "Instructor or Teacher", value: "Instructor or Teacher" },
 			{ label: "Intern", value: "Intern" },
 			{ label: "Banker", value: "Banker" },
@@ -136,8 +136,8 @@ class CreateProfile extends Component {
 			{ label: "Graphic Designer", value: "Graphic Designer" },
 			{ label: "Musician", value: "Musician" },
 			{
-				label: "Movie Producer or Director",
-				value: "Movie Producer or Director"
+				label: "Movie Producer/Director",
+				value: "Movie Producer/Director"
 			},
 			{ label: "Freelancer", value: "Freelancer" },
 			{ label: "Other", value: "Other" },
@@ -212,7 +212,7 @@ class CreateProfile extends Component {
 									onChange={this.onChange}
 									error={errors.skills}
 									info="Please use comma separated values (eg.
-                    HTML,CSS,JavaScript,PHP"
+                    HTML,CSS,JavaScript,PHP)"
 								/>
 								<TextFieldGroup
 									placeholder="Github Username"
