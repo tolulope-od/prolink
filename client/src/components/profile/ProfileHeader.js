@@ -19,7 +19,24 @@ class ProfileHeader extends Component {
 							</div>
 						</div>
 						<div className="text-center">
-							<h1 className="display-4 text-center">{profile.user.name}</h1>
+							{profile.user.name === "Tolulope Odueke" &&
+							profile.social.twitter ? (
+								<h1 className="display-4 text-center">
+									{profile.user.name}{" "}
+									<small>
+										<i
+											style={{
+												width: "10px",
+												height: "10px"
+											}}
+											className="fas fa-check-circle fa-1x"
+										/>
+									</small>
+								</h1>
+							) : (
+								<h1 className="display-4 text-center">{profile.user.name}</h1>
+							)}
+
 							<p className="lead text-center">
 								{profile.status}{" "}
 								{isEmpty(profile.company) ? null : (
